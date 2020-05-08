@@ -1,0 +1,197 @@
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
+<style>
+  body {
+    background: purple;
+    overflow: hidden;
+    width:100%;
+    height:100%;
+  }
+  img {
+    position: absolute;
+    z-index: -1;
+  }
+  div {
+    position: absolute;
+  }
+
+  @keyframes    text-animation {
+      0% {color : #ff8426;}
+      25% {color : #fffc84;}
+      50% {color : #ff83f4;}
+      75% {color : #83b6ff;}
+      100% {color : #ff8426;}
+  }
+  @-webkit-keyframes text-animation {
+      0% {color : #ff8426;}
+      25% {color : #fffc84;}
+      50% {color : #ff83f4;}
+      75% {color : #83b6ff;}
+      100% {color : #ff8426;}
+  }
+
+  @keyframes    firework-animation {
+      0% {background-color : #ff8426;}
+      25% {background-color : #fffc84;}
+      50% {background-color : #ff83f4;}
+      75% {background-color : #83b6ff;}
+      100% {background-color : #ff8426;}
+  }
+  @-webkit-keyframes firework-animation {
+      0% {background-color : #ff8426;}
+      25% {background-color : #fffc84;}
+      50% {background-color : #ff83f4;}
+      75% {background-color : #83b6ff;}
+      100% {background-color : #ff8426;}
+  }
+  .fireWorkParticle {
+      <!-- z-index : 999; -->
+      position: absolute;
+      z-index: -1;
+      height : 5px;
+      width : 5px;
+      border-radius : 5px;
+      animation-name : firework-animation;
+      animation-timing-function : linear;
+      animation-duration : 1s;
+      animation-iteration-count : infinite;
+  }
+
+<!-- /////////////////// -->
+<!-- TEXT ANIMATION  -->
+
+.rapper{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: green;
+    <!-- height: 40px; -->
+    text-align: right;
+
+}
+
+#cadeautip {
+  font-family: 'Balsamiq Sans', cursive;
+  opacity: 0;
+  width: 100vw;
+  height: 100vh;
+  font-size: 10vw;
+  animation-name : text-animation;
+  animation-timing-function : linear;
+  animation-duration : .2s;
+  animation-iteration-count : infinite;
+  -webkit-transition: opacity 200s ease-in-out;
+  -moz-transition: opacity 200s ease-in-out;
+  transition: opacity 200s ease-in-out;
+}
+
+.marquee, .marquee2, .marquee3, .marquee4, .marquee5, .marquee6, .marquee7, .marquee8 {
+    <!-- position: absolute;
+    top: 0;
+    left: 0; -->
+    <!-- background: red; -->
+    z-index: 999;
+    white-space: nowrap;
+    -webkit-animation: rightThenLeft 2s linear;
+    font-size: 10vh;
+    color: violet;
+    font-family: 'Balsamiq Sans', cursive;
+    opacity: 20%;
+}
+
+.marquee2 {
+    color: red;
+}
+.marquee3 {
+    color: red;
+}
+.marquee4 {
+    color: red;
+}
+.marquee5 {
+    color: red;
+}
+.marquee6 {
+    color: red;
+}
+.marquee7 {
+    color: red;
+}
+
+.marquee8 {
+    color: #CC0099;
+}
+
+.imageholder {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 102vw;
+  height: 102vh;
+}
+
+</style>
+</head>
+<body>
+  <div id="cadeautip">
+    <marquee height=100% direction="up" scrollamount=50>
+      <marquee behavior="alternate" scrollamount=20>
+      <span>Kijk onder een bank</span>
+    </marquee>
+    </marquee>
+  </div>
+  <div class="imageholder">
+  </div>
+  <div class="rapper">
+    <marquee behavior="alternate" ><span class="marquee">28 jaar moeder! <3</span></marquee>
+    <marquee behavior="alternate" ><span class="marquee2">28 jaar moeder! <3</span></marquee>
+    <marquee behavior="alternate" ><span class="marquee3">28 jaar moeder! <3</span></marquee>
+    <marquee behavior="alternate" ><span class="marquee4">28 jaar moeder! <3</span></marquee>
+    <marquee behavior="alternate" ><span class="marquee5">28 jaar moeder! <3</span></marquee>
+    <marquee behavior="alternate" ><span class="marquee6">28 jaar moeder! <3</span></marquee>
+    <marquee behavior="alternate" ><span class="marquee7">28 jaar moeder! <3</span></marquee>
+    <marquee behavior="alternate" ><span class="marquee8">28 jaar moeder! <3</span></marquee>
+  </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script>
+  function get_random(min, max) {
+    return Math.floor(Math.random()*max) + min;
+  }
+  function append_random(src, max_size) {
+    let rand_width = get_random(0, max_size);
+    let rand_left = get_random(-50, 150);
+    let rand_top = get_random(-50, 150);
+    if (src == "colorbar") {
+      $('.imageholder').append(`<div class="fireWorkParticle" style="width: ${rand_width}vw; left: ${rand_left}vw; top: ${rand_top}vh"></div>`)
+    }
+    else if (src == "colorbarvertical") {
+      $('.imageholder').append(`<div class="fireWorkParticle" style="height: ${rand_width}vw; left: ${rand_left}vw; top: ${rand_top}vh"></div>`)
+    }
+    else {
+      $('.imageholder').append(`<img style="width: ${rand_width}vw; left: ${rand_left}vw; top: ${rand_top}vh" src=${src} />`)
+    }
+  }
+
+  function jittery_timer(src, max_size, max_time) {
+    append_random(src, max_size);
+    setTimeout(function() {jittery_timer(src, max_size, max_time)}, get_random(100, max_time));
+  }
+
+  function add_text() {
+    $('#cadeautip').css('opacity', '.5');
+  }
+
+  jittery_timer("mama2.png", 50, 500)
+  jittery_timer("colorbar", 50, 1000)
+  jittery_timer("colorbarvertical", 50, 1000)
+  jittery_timer("heart.png", 30, 2000)
+  jittery_timer("heart2.png", 20, 2000)
+  jittery_timer("heart3.png", 20, 2000)
+
+  setTimeout(add_text, 1000);
+</script>
+</body>
+</html
