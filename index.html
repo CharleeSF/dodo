@@ -179,12 +179,12 @@
     }
     append_random(src, max_size);
 
-    if (go_faster && max_time > 50) {
+    if (go_faster && max_time > 200) {
       max_time -= 995;
       console.log(max_time);
     }
 
-    if (grow && max_size < 200) {
+    if (grow && max_size < 100) {
       max_size += 3;
       console.log(max_size);
     }
