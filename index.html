@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Fijne moederdag</title>
+  <title>Cadeauris</title>
   <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
 <style>
   body {
@@ -136,28 +136,23 @@
 </style>
 </head>
 <body>
-  <div id="cadeautip">
-    <marquee height=100% direction="up" scrollamount=50>
-      <marquee behavior="alternate" scrollamount=20>
-      <span>Kijk onder een bank</span>
-    </marquee>
-    </marquee>
-  </div>
   <div class="imageholder">
   </div>
   <div class="rapper">
-    <marquee behavior="alternate" ><span class="marquee">28 jaar moeder! <3</span></marquee>
-    <marquee behavior="alternate" ><span class="marquee2">28 jaar moeder! <3</span></marquee>
-    <marquee behavior="alternate" ><span class="marquee3">28 jaar moeder! <3</span></marquee>
-    <marquee behavior="alternate" ><span class="marquee4">28 jaar moeder! <3</span></marquee>
-    <marquee behavior="alternate" ><span class="marquee5">28 jaar moeder! <3</span></marquee>
-    <marquee behavior="alternate" ><span class="marquee6">28 jaar moeder! <3</span></marquee>
-    <marquee behavior="alternate" ><span class="marquee7">28 jaar moeder! <3</span></marquee>
-    <marquee behavior="alternate" ><span class="marquee8">28 jaar moeder! <3</span></marquee>
+    <marquee behavior="alternate" ><span class="marquee">GEFELICITEERD DORISSSSSS <3 <3</span></marquee>
+    <marquee behavior="alternate" ><span class="marquee2">GEFELICITEERD DORISSSSSS <3 <3</span></marquee>
+    <marquee behavior="alternate" ><span class="marquee3">GEFELICITEERD DORISSSSSS <3 <3</span></marquee>
+    <marquee behavior="alternate" ><span class="marquee4">GEFELICITEERD DORISSSSSS <3 <3</span></marquee>
+    <marquee behavior="alternate" ><span class="marquee5">GEFELICITEERD DORISSSSSS <3 <3</span></marquee>
+    <marquee behavior="alternate" ><span class="marquee6">GEFELICITEERD DORISSSSSS <3 <3</span></marquee>
+    <marquee behavior="alternate" ><span class="marquee7">GEFELICITEERD DORISSSSSS <3 <3</span></marquee>
+    <marquee behavior="alternate" ><span class="marquee8">GEFELICITEERD DORISSSSSS <3 <3</span></marquee>
   </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 </script>
 <script>
+  let folderlist = ["bethlidacharlee.jpg", "dorislida.jpg", "lida.jpg", "lidaalex.jpg", "lidadoris.jpg", "manonlida.jpg"];
+
   function get_random(min, max) {
     return Math.floor(Math.random()*max) + min;
   }
@@ -176,23 +171,39 @@
     }
   }
 
-  function jittery_timer(src, max_size, max_time) {
+  function jittery_timer(orig_src, max_size, max_time, go_faster, grow) {
+    if (orig_src === "") {
+      src = "fotos/" + folderlist[Math.floor(Math.random() * folderlist.length)];
+    } else {
+      src = orig_src;
+    }
     append_random(src, max_size);
-    setTimeout(function() {jittery_timer(src, max_size, max_time)}, get_random(100, max_time));
+
+    if (go_faster && max_time > 50) {
+      max_time -= 995;
+      console.log(max_time);
+    }
+
+    if (grow && max_size < 200) {
+      max_size += 3;
+      console.log(max_size);
+    }
+
+    setTimeout(function() {jittery_timer(orig_src, max_size, max_time, go_faster, grow)}, get_random(100, max_time));
   }
 
   function add_text() {
-    $('#cadeautip').css('opacity', '.5');
+    jittery_timer("meindl.jpg", 1, 10000, go_faster=true, grow=true);
   }
 
-  jittery_timer("mama2.png", 50, 500)
+  jittery_timer("", 50, 500)
   jittery_timer("colorbar", 50, 1000)
   jittery_timer("colorbarvertical", 50, 1000)
   jittery_timer("heart.png", 30, 2000)
   jittery_timer("heart2.png", 20, 2000)
   jittery_timer("heart3.png", 20, 2000)
 
-  setTimeout(add_text, 1000);
+  setTimeout(add_text, 500);
 </script>
 </body>
 </html
