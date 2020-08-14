@@ -136,6 +136,13 @@
 </style>
 </head>
 <body>
+  <div id="cadeautip">
+    <marquee height=100% direction="up" scrollamount=50>
+      <marquee behavior="alternate" scrollamount=20>
+      <span>Je krijgt 200 euro budget voor een paar Meindls!</span>
+    </marquee>
+    </marquee>
+  </div>
   <div class="imageholder">
   </div>
   <div class="rapper">
@@ -151,7 +158,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 </script>
 <script>
-  let folderlist = ["thor.png","odil.png", "iago.png", "nus.png", "joep.png", "manon.png"];
+  let folderlist = ["thor.png","odil.png", "iago.png", "nus.png", "joep.png", "manon.png", "charlee.png", "simon.png",
+                    "krelis.png", "jose.png", "mette.png"];
 
   function get_random(min, max) {
     return Math.floor(Math.random()*max) + min;
@@ -204,6 +212,12 @@
   jittery_timer("heart3.png", 20, 2000)
 
   setTimeout(add_text, 500);
+
+  function change_cadeautip() {
+    $('#cadeautip').css('opacity', '1');
+  }
+
+  setTimeout(change_cadeautip, 1);
 </script>
 </body>
 </html
